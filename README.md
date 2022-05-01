@@ -4,4 +4,5 @@
 
   One of the strategies Austin has implemented to reduce the number of cars on the road is to create [a network of safe bicycle routes](https://austin.maps.arcgis.com/apps/MapJournal/index.html?appid=dba125033d42453491b36ea5fb935eea). Bicycles present a cheap, zero emission transportation solution, but it can be difficult to measure the usage of personal bicycles to determine which factors affect ridership. Fortunately the city also offers [MetroBike](https://www.capmetro.org/ourservices/metrobike), a bike sharing service. MetroBike tracks the origin, destination and time for every trip. MetroBike data does not necessarily correlate with other bike trips, and only covers a small section of the city, but still provides us with the best set of tools to analyze bike ridership in the city of Austin and identify potential approaches to make Austin a more bike friendly city.
   
-  The data used in this project was acquired from[Kaggle](https://www.kaggle.com/datasets/jboysen/austin-bike).
+  
+  The data used in this project was acquired from [Kaggle](https://www.kaggle.com/datasets/jboysen/austin-bike).
