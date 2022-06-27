@@ -14,7 +14,8 @@ WHERE start_station_name IN
     'Main Office', 
     'Repair Shop', 
     'Re-branding', 
-    'Customer Service'); 
+    'Customer Service',
+    'Stolen'); 
     
 UPDATE trips
 SET end_station_id=1001
@@ -105,4 +106,62 @@ WHERE start_station_name='MapJam at Scoot Inn';
 UPDATE trips
 SET end_station_id=3004
 WHERE end_station_name='MapJam at Scoot Inn';
+
+INSERT INTO stations 
+	(station_id, name, status)  
+    VALUES 
+		(0, 'Missing/Stolen', 'missing'),
+        (1, 'Mobile Station', 'mobile'),
+        (2, 'Marketing Event', 'mobile'),
+        (3, 'Mobile Station @ Boardwalk Opening Ceremony', 'mobile'),
+        (4, 'Mobile Station @ Unplugged', 'mobile'),
+        (5, 'Mobile Station @ Bike Fest', 'mobile');
+UPDATE trips
+SET end_station_id=0
+WHERE end_station_name IN ('Missing','Stolen');
+
+UPDATE trips
+SET start_station_id=1
+WHERE start_station_name='Mobile Station';
+
+UPDATE trips
+SET end_station_id=1
+WHERE end_station_name='Mobile Station';
+
+UPDATE trips
+SET start_station_id=2
+WHERE start_station_name='Marketing Event';
+
+UPDATE trips
+SET end_station_id=2
+WHERE end_station_name='Marketing Event';
+
+UPDATE trips
+SET start_station_id=3
+WHERE start_station_name='Mobile Station @ Boardwalk Opening Ceremony';
+
+UPDATE trips
+SET end_station_id=3
+WHERE end_station_name='Mobile Station @ Boardwalk Opening Ceremony';
+
+UPDATE trips
+SET start_station_id=4
+WHERE start_station_name='Mobile Station @ Unplugged';
+
+UPDATE trips
+SET end_station_id=4
+WHERE end_station_name='Mobile Station @ Unplugged';
+
+UPDATE trips
+SET start_station_id=5
+WHERE start_station_name='Mobile Station @ Bike Fest';
+
+UPDATE trips
+SET end_station_id=5
+WHERE end_station_name='Mobile Station @ Bike Fest';
+
+ALTER TABLE trips
+DROP COLUMN start_station_name,
+DROP COLUMN end_station_name;
+
 
