@@ -14,7 +14,7 @@ CREATE TABLE stations(
    PRIMARY KEY (station_id)
 ) ;
 
-LOAD DATA INFILE 'C:/ProgramData/MySQL/MySQL Server 8.0/Uploads/bike_share/austin_bikeshare_stations.csv'
+LOAD DATA INFILE 'C:/ProgramData/MySQL/MySQL Server 8.0/Uploads/bike_share/Austin_MetroBike_Kiosk_Locations.csv'
 INTO TABLE stations 
 FIELDS TERMINATED BY ',' 
 ENCLOSED BY '"'
@@ -40,7 +40,7 @@ CREATE TABLE trips(
    PRIMARY KEY (trip_id)
 ) ;
 
-LOAD DATA INFILE 'C:/ProgramData/MySQL/MySQL Server 8.0/Uploads/bike_share/austin_bikeshare_trips.csv'
+LOAD DATA INFILE 'C:/ProgramData/MySQlatitudeL/MySQL Server 8.0/Uploads/bike_share/Austin_MetroBike_Trips.csv'
 INTO TABLE trips 
 FIELDS TERMINATED BY ',' 
 ENCLOSED BY '"'
@@ -56,3 +56,8 @@ IGNORE 1 ROWS
     end_station_id=NULLIF(@end_station_id,''),
     start_station_id=NULLIF(@start_station_id,''),
     bike_id=NULLIF(@bike_id,'');
+    
+
+
+
+
