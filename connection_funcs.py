@@ -59,14 +59,14 @@ def station_lookup(id):
 def cursor_execute(connection,query):
     cursor=connection.cursor()
     cursor.execute(query)
-    result=cursor.fetchall()
+    result=pd.DataFrame(cursor.fetchall(),columns=cursor.column_names)
     cursor.close()
     return result
 
 @establish_connection
 def run_sql(connection,query):
     result=cursor_execute(connection,query)
-    return pd.DataFrame(result)
+    return result
 
 @establish_connection
 def run_multiple_sql(connection,queries,return_index=-1):
@@ -79,5 +79,5 @@ def run_multiple_sql(connection,queries,return_index=-1):
             cursor_execute(connection,query)
     
 
-    return pd.DataFrame(result)
+    return result
 
