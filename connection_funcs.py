@@ -37,12 +37,13 @@ def establish_connection(func):
             connection.close()
         return result
     return wrapper
+#decorator function for connecting with database
 
 
 
 def exec_query(query,*args,**kwargs):
     return pd.read_sql(query, con=db_connection_str,*args,**kwargs)
-#Runs SQL query on bikeshare database and returns pandas df
+#Uses pandas built in function to query bikeshare database
 
 
 def station_lookup(id):
@@ -50,8 +51,8 @@ def station_lookup(id):
     SELECT *
     FROM stations 
     WHERE station_id={id}"""
-    return pd.read_sql(query, con=db_connection_str)
-#Runs common query for a given station id
+    return exec_query(query)
+#Executes common query, less verbose than using stored procedure
 
 
 
@@ -63,10 +64,14 @@ def cursor_execute(connection,query):
     cursor.close()
     return result
 
+
+
 @establish_connection
 def run_sql(connection,query):
     result=cursor_execute(connection,query)
     return result
+#Performs the same role as exec_query, but using pandas built in read_sql function leads to errors for certain querries using stored procedures
+
 
 @establish_connection
 def run_multiple_sql(connection,queries,return_index=-1):
@@ -77,7 +82,6 @@ def run_multiple_sql(connection,queries,return_index=-1):
             result=cursor_execute(connection,query)
         else:
             cursor_execute(connection,query)
-    
-
     return result
+#Takes list of SQL statement, executes them in order and outputs the result of the query specified by return_index
 
